@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transaction Logs</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100">
+  <header class="bg-blue-600 text-white p-4 shadow-md">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold">Transaction Logs</h1>
+      <a href="index.html" class="text-white hover:text-gray-200">
+        <i class="fas fa-arrow-left"></i> Back to Store
+      </a>
+    </div>
+  </header>
+
+  <main class="container mx-auto p-4">
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <div id="logsContent"></div>
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const transactions = JSON.parse(localStorage.getItem('transactions')) || [];
+      const logsContent = document.getElementById('logsContent');
+
+      if (transactions.length === 0) {
+        logsContent.innerHTML = '<p class="text-gray-500">No transactions recorded yet.</p>';
+        return;
+      }
+
+      logsContent.innerHTML = transactions.map(transaction => `
+        <div class="mb-6 p-4 bg-gray-100 rounded-lg">
+          <h3 class="font-bold">${new Date(transaction.date).toLocaleString()}</h3>
+          <ul class="mt-2">
+            ${transaction.items.map(item => `
+              <li class="flex justify-between py-1">
+                <span>${item.quantity}x ${item.name}</span>
+                <span>$${item.total.toFixed(2)}</span>
+              </li>
+            `).join('')}
+          </ul>
+          <div class="mt-2 pt-2 border-t font-bold">
+            Total: $${transaction.total.toFixed(2)}
+          </div>
+        </div>
+      `).join('');
+    });
+  </script>
+</body>
+</html>
