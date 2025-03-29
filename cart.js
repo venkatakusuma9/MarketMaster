@@ -64,23 +64,23 @@ function loadCartItems() {
 
 // Set up event listeners
 function setupEventListeners() {
-  // Quantity adjustment buttons
-  document.querySelectorAll('.quantity-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const action = e.currentTarget.dataset.action;
-      const itemElement = e.currentTarget.closest('[data-id]');
+  // Event delegation for quantity buttons
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('.quantity-btn')) {
+      const action = e.target.closest('.quantity-btn').dataset.action;
+      const itemElement = e.target.closest('[data-id]');
       const itemId = parseInt(itemElement.dataset.id);
       updateQuantity(itemId, action);
-    });
+    }
   });
 
-  // Remove item buttons
-  document.querySelectorAll('.remove-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const itemElement = e.currentTarget.closest('[data-id]');
+  // Event delegation for remove buttons (works for dynamically created elements)
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('.remove-btn')) {
+      const itemElement = e.target.closest('[data-id]');
       const itemId = parseInt(itemElement.dataset.id);
       removeFromCart(itemId);
-    });
+    }
   });
 
   // Add more items button
