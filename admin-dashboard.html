@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100">
+  <header class="bg-blue-600 text-white p-4 shadow-md">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold">Admin Dashboard</h1>
+      <div class="flex space-x-4">
+        <button id="logoutButton" class="text-white hover:text-gray-200">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+        <a href="index.html" class="text-white hover:text-gray-200">
+          <i class="fas fa-arrow-left"></i> Store
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container mx-auto p-4">
+    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+      <h2 class="text-xl font-semibold mb-4">Manage Items</h2>
+      <div id="itemList" class="space-y-4">
+        <!-- Items will be dynamically loaded here -->
+      </div>
+      <button id="addItemButton" class="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">
+        Add New Item
+      </button>
+    </div>
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>
