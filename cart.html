@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart - Store Management</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100">
+  <header class="bg-blue-600 text-white p-4 shadow-md">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold">Your Cart</h1>
+      <div>
+        <a href="index.html" class="bg-white text-blue-600 px-4 py-2 rounded-lg hover:bg-gray-200 transition">
+          <i class="fas fa-arrow-left mr-2"></i>Back to Store
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container mx-auto p-4">
+    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+      <h2 class="text-xl font-semibold mb-4">Cart Items</h2>
+      <div id="cartItems" class="space-y-4">
+        <!-- Cart items will be loaded here -->
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <h2 class="text-xl font-semibold mb-4">Price Details</h2>
+      <div id="priceInputs" class="space-y-4">
+        <!-- Price inputs will be loaded here -->
+      </div>
+      <div class="mt-6 flex justify-between items-center">
+        <button id="addMoreItems" class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300 transition">
+          <i class="fas fa-plus mr-2"></i>Add More Items
+        </button>
+        <button id="generateBill" class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition">
+          Generate Bill <i class="fas fa-file-invoice ml-2"></i>
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+  <script src="cart.js"></script>
+</body>
+</html>
